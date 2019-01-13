@@ -24,6 +24,7 @@ import {
   MatBottomSheetModule,
   MatCheckboxModule,
   MatPaginatorModule,
+  MatGridListModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MdToHtmlPipe } from '../pipes/md-to-html.pipe';
@@ -58,6 +59,7 @@ import { MdToHtmlPipe } from '../pipes/md-to-html.pipe';
     MatPaginatorModule,
     MatPaginatorModule,
     MdToHtmlPipe,
+    MatGridListModule
   ],
   declarations: [MdToHtmlPipe],
   providers: [],

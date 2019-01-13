@@ -1,0 +1,27 @@
+<div class="container my-4">
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="mx-2">
+    <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+    <div fxFlex.lg="50" fxFlex.md="60" fxFlex.sm="70" fxFlex.xs="90">
+      <mat-card *ngIf="!busy && category">
+        <mat-card-header>
+          <mat-card-title>{{ category.title }}</mat-card-title>
+          <mat-card-subtitle>category</mat-card-subtitle>
+        </mat-card-header>
+        <img matCardImage src="http://localhost:1337/{{ category.cover.url }}">
+        <mat-card-content class="mat-body">
+          {{ category.description }}
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngIf="!busy && category">
+    <mat-grid-list cols="3" rowHeight="300" gutterSize="20">
+      <mat-grid-tile *ngFor="let article of category.articles">
+        <a mat-button [routerLink]="['/article', article._id]" class="m-0 p-0">
+          <mat-grid-tile-header>{{ article.title }}</mat-grid-tile-header>
+          <img height="300" src="http://localhost:1337/{{article.gallery}}" alt="Photo of a Shiba Inu">
+        </a>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

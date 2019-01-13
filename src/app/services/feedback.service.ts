@@ -3,8 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/operator/share';
-import { Observable } from 'rxjs';
-import { BehaviorSubject } from 'rxjs';
 
 import { AppSettings } from '../utils/constants';
 
@@ -32,7 +30,7 @@ export class FeedbackService {
       'copy_me': copy_me
     };
 
-    return this.http.post(`${AppSettings.API_ENDPOINT}/feedback`, params);
+    return this.http.post(`${AppSettings.CMS_ENDPOINT}/feedback`, params);
   }
 
 }

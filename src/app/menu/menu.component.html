@@ -3,7 +3,7 @@
     <div class="my-2" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
       <div>
         <a>
-          <img size="100" src="../../assets/images/user.png">
+          <img width="100" style="border-radius: 50%;" src="../../assets/images/profile-pic.jpg">
         </a>
       </div>
     </div>
@@ -11,38 +11,36 @@
       fxLayoutGap="7px">
       <div>
         <a>
-          <span class="lead">{{ currentUser?.username || 'Not logged in' }}</span>
+          <span class="lead">Nkansah Rexford</span>
         </a>
       </div>
     </div>
     <div class="mt-1">
+        <!-- HOME
+        ABOUT ME
+        BOOK APPOINTMENT
+        CONTACT ME
+        FAQ
+        TERMS OF SERVICE -->
       <mat-nav-list>
         <a [routerLink]="['/']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
           <mat-icon class="mr-3">home</mat-icon> Home
         </a>
         <a [routerLink]="['/about']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
-          <mat-icon class="mr-3">info</mat-icon>
+          <mat-icon class="mr-3">account_circle</mat-icon>
           About
         </a>
         <a [routerLink]="['/help']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
           <mat-icon class="mr-3">help</mat-icon>
-          Help
+          Book Appointment
         </a>
         <a [routerLink]="['/how-it-works']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
           <mat-icon class="mr-3">tune</mat-icon>
-          How It works
+          Contact Me
         </a>
         <a [routerLink]="['/faq']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
           <mat-icon class="mr-3">question_answer</mat-icon>
           FAQs
-        </a>
-        <a [routerLink]="['/safety']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
-          <mat-icon class="mr-3">local_hospital</mat-icon>
-          Safety
-        </a>
-        <a mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle(); showFeedback()">
-          <mat-icon class="mr-3">send</mat-icon>
-          Send Feedback
         </a>
         <a mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle(); showMobile()">
           <mat-icon class="mr-3">get_app</mat-icon>
@@ -78,8 +76,8 @@
       <a mat-icon-button [routerLink]="['/']" title="Home" fxShow.xs fxHide.gt-xs>
         <mat-icon>home</mat-icon>
       </a>
-      <a mat-icon-button routerLink="/all" title="Recent Requests" fxShow.xs fxHide.gt-xs>
-        <mat-icon>list</mat-icon>
+      <a mat-icon-button routerLink="/about" title="Recent Requests" fxShow.xs fxHide.gt-xs>
+        <mat-icon>account_circle</mat-icon>
       </a>
       <button mat-mini-fab color="secondary" routerLink="/new" title="New Request" fxShow.xs fxHide.gt-xs class="ml-2">
         <mat-icon>add</mat-icon>
@@ -89,20 +87,17 @@
         Home
       </a>
       <a mat-button routerLink="/all" title="Recent Requests" fxHide.xs>
-        <mat-icon class="mr-0">list</mat-icon>
+        <mat-icon class="mr-0">account_box</mat-icon>
         About
       </a>
       <a class="ml-2" mat-flat-button routerLink="/new" color="secondary" title="New Request" fxHide.xs>
-        <mat-icon class="mr-0">add</mat-icon>
-        New Request
+        <mat-icon class="mr-0">contacts</mat-icon>
+        Contact
       </a>
       <span class="spacer"></span>
-      <a [routerLink]="['/about']" mat-icon-button title="about" class="mr-1">
+      <!-- <a [routerLink]="['/about']" mat-icon-button title="about" class="mr-1">
         <mat-icon aria-label="Example icon-button with a heart icon">help</mat-icon>
-      </a>
-      <a mat-icon-button fxShow.xs fxHide.gt-xs [matMenuTriggerFor]="menu">
-        <mat-icon>account_circle</mat-icon>
-      </a>
+      </a> -->
       <button mat-icon-button class="ml-2" title="Logout" style="cursor: pointer" >
         <mat-icon> power_settings_new</mat-icon>
       </button>

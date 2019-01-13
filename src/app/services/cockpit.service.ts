@@ -1,56 +1,110 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as marked from 'marked';
-import { AppSettings } from './constants';
-
-const COLLECTIONS = '/collections';
-const REGIONS = '/regions';
+import { AppSettings } from '../utils/constants';
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
 
 @Injectable()
 export class CockpitService {
+  constructor(private apollo: Apollo) {}
 
-  constructor(private http: HttpClient) { }
-
-  /**
-   * Get all entries of a collection
-   * @param collection collection The name of the collection wanted
-   */
-  getEntries(collection: string) {
-    return this.http.get(`${AppSettings.CMS_ENDPOINT}${COLLECTIONS}/get/${collection}?token=${AppSettings.TOKEN}`)
-      // .map((res) => {
-      //   if (res) {
-      //     console.log(`${collection} stored for online use`);
-      //     localStorage.setItem(collection, JSON.stringify(res));
-      //   }
-      //   return res;
-      // })
-      // .catch((err) => {
-      //   return of(JSON.parse(localStorage.getItem('faq')));
-      // });
+  listCategories() {
+    return this.apollo
+      .query({
+        query: gql`
+          query {
+            categories {
+              _id,
+              title,
+              subtitle,
+              description,
+              cover {
+                _id,
+                url
+              }
+            }
+          }
+        `
+      });
   }
 
-  /**
-   * Get a snippet for use in a section i.e about or help page
-   * @param region the section to pull
-   */
-  getRegion(region: string) {
-    return this.http.get(`${AppSettings.CMS_ENDPOINT}${REGIONS}/data/${region}?token=${AppSettings.TOKEN}`)
-      // .map((res) => {
-      //   if (res) {
-      //     console.log(`${region} stored for online use`);
-      //     localStorage.setItem(region, JSON.stringify(res));
-      //   }
-      //   return res;
-      // })
-      // .catch((err: HttpErrorResponse) => {
-      //   console.log(err);
-      //   console.log('loaded from localstorage');
-      //   return of(JSON.parse(localStorage.getItem(region)));
-      // });
+  getCategory(id: string) {
+    return this.apollo
+      .query({
+        variables: {
+          category: id
+        },
+        query: gql`
+          query category($category: ID!) {
+            category(id: $category) {
+              _id,
+              title,
+              subtitle,
+              description,
+              cover {
+                _id,
+                url,
+              },
+              articles {
+                _id,
+                title,
+                # content,
+                # gallery {
+                #   _id,
+                #   name,
+                #   url
+                # }
+              }
+            }
+          }
+        `
+      });
+  }
+
+  getArticles() {
+    return this.apollo
+      .query({
+        query: gql`
+          articles {
+            _id,
+            title,
+            content
+          }
+        `
+      });
+  }
+
+  getArticle(id: string) {
+    return this.apollo
+      .query({
+        variables: {
+          article: id
+        },
+        query: gql`
+          query article($article: ID!) {
+            article(id: $article) {
+              _id,
+              title,
+              subtitle,
+              cover {
+                _id,
+                name,
+                url
+              },
+              content,
+              gallery {
+                _id,
+                name,
+                url
+              }
+            }
+          }
+        `
+      });
   }
 
   markdownToHtml(md: string) {
     return marked(md);
   }
-
 }

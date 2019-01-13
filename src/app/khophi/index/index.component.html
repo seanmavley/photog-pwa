@@ -1,0 +1,11 @@
+<div class="container my-4 mx-2">
+  <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+  <mat-grid-list cols="3" rowHeight="300" gutterSize="20">
+    <mat-grid-tile *ngFor="let category of categories">
+      <a mat-button [routerLink]="['/category', category._id]"  class="m-0 p-0">
+        <mat-grid-tile-header>{{ category.title }}</mat-grid-tile-header>
+        <img height="300" src="{{cms}}/{{category.cover.url}}" alt="Photo of a Shiba Inu">
+      </a>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
