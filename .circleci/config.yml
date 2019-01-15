@@ -39,6 +39,9 @@ jobs:
       - run: npm update
       # switch to using production URL
       - run: sed -i "/const uri = 'http:\/\/localhost:1337\/graphql';/c\const uri = 'https:\/\/api.khophi.photography\/graphql';" ./src/app/graphql.module.ts
+      # switch to using production url
+      
+      - run: sed -i "/public static CMS_ENDPOINT = 'http:\/\/localhost:1337';/c\public static CMS_ENDPOINT = 'https:\/\/api.khophi.photography';" ./src/app/utils/constants.ts
       # ng build --prod
       - run: ng build --prod
 
