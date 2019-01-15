@@ -30,15 +30,19 @@
           <mat-icon class="mr-3">account_circle</mat-icon>
           About
         </a>
-        <a [routerLink]="['/help']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
+        <a [routerLink]="['/clients']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
           <mat-icon class="mr-3">help</mat-icon>
-          Book Appointment
+          Worked With
         </a>
-        <a [routerLink]="['/how-it-works']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
+        <a [routerLink]="['/contact']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
           <mat-icon class="mr-3">tune</mat-icon>
           Contact Me
         </a>
-        <a [routerLink]="['/faq']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
+        <a [routerLink]="['/testimonials']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
+          <mat-icon class="mr-3">tune</mat-icon>
+          We're loved
+        </a>
+        <a [routerLink]="['/faqs']" mat-list-item class="ml-2" style="font-size:15px;" (click)="sidenav.toggle()">
           <mat-icon class="mr-3">question_answer</mat-icon>
           FAQs
         </a>
@@ -76,21 +80,18 @@
       <a mat-icon-button [routerLink]="['/']" title="Home" fxShow.xs fxHide.gt-xs>
         <mat-icon>home</mat-icon>
       </a>
-      <a mat-icon-button routerLink="/about" title="Recent Requests" fxShow.xs fxHide.gt-xs>
+      <a mat-icon-button routerLink="/about" title="About" fxShow.xs fxHide.gt-xs>
         <mat-icon>account_circle</mat-icon>
       </a>
-      <button mat-mini-fab color="secondary" routerLink="/new" title="New Request" fxShow.xs fxHide.gt-xs class="ml-2">
-        <mat-icon>add</mat-icon>
-      </button>
       <a mat-button [routerLink]="['/']" title="Home" fxHide.xs>
         <mat-icon class="mr-0">home</mat-icon>
         Home
       </a>
-      <a mat-button routerLink="/all" title="Recent Requests" fxHide.xs>
+      <a mat-button routerLink="/about" title="Recent Requests" fxHide.xs>
         <mat-icon class="mr-0">account_box</mat-icon>
         About
       </a>
-      <a class="ml-2" mat-flat-button routerLink="/new" color="secondary" title="New Request" fxHide.xs>
+      <a class="ml-2" mat-flat-button routerLink="/contact" color="secondary" title="New Request" fxHide.xs>
         <mat-icon class="mr-0">contacts</mat-icon>
         Contact
       </a>

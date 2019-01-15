@@ -1,0 +1,21 @@
+<div class="container my-4">
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <div *ngIf="contact.cover?.url">
+      <img src="{{ CMS }}/{{ contact.cover.url }}" width="300">
+    </div>
+    <div fxFlex.sm="80" fxFlex.lg="50" fxFlex.md="70">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ contact.title }}</mat-card-title>
+          <!-- <mat-card-subtitle>Subtitle</mat-card-subtitle> -->
+        </mat-card-header>
+        <mat-card-content>
+          {{ contact.content }}
+        </mat-card-content>
+        <mat-card-actions align="start">
+          <button mat-button (click)="onAction1">Learn more</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

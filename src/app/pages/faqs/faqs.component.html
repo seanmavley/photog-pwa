@@ -1,0 +1,23 @@
+<div class="container my-4">
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
+    <div fxFlex.gt-xs="80" fxFlex.xs="95">
+      <div fxLayout="column wrap" fxLayoutGap="15px">
+        <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+        <div fxFlex *ngFor="let faq of faqs">
+          <mat-card>
+            <mat-card-title>{{ faq.question}}</mat-card-title>
+            <mat-card-subtitle title="{{ faq.updatedAt }}">Last updated: {{ faq.updatedAt | date }}</mat-card-subtitle>
+            <mat-card-content>
+              <p style="font-size:1.2rem;">
+                {{ faq.answer}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions align="start" *ngIf="faq.link">
+              <a mat-button>Learn more</a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

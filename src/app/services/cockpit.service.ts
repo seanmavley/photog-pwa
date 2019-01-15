@@ -21,7 +21,8 @@ export class CockpitService {
               description,
               cover {
                 _id,
-                url
+                url,
+                name
               }
             }
           }
@@ -49,6 +50,10 @@ export class CockpitService {
               articles {
                 _id,
                 title,
+                cover {
+                  name,
+                  url
+                }
                 # content,
                 # gallery {
                 #   _id,
@@ -100,6 +105,57 @@ export class CockpitService {
               }
             }
           }
+        `
+      });
+  }
+
+  getAllPages() {
+    return this.apollo
+      .query({
+        query: gql`
+        query pages {
+          pages {
+            slug,
+            title,
+            content,
+            cover {
+              name,
+              url
+            },
+          }
+        }`
+      });
+  }
+
+  getAllFaqs() {
+    return this.apollo
+      .query({
+        query: gql`
+        query faqs {
+          faqs {
+            question,
+            answer,
+            link,
+            updatedAt
+          }
+        }
+        `
+      });
+  }
+
+  getAllTestimonials() {
+    return this.apollo
+      .query({
+        query: gql`
+        query testimonials {
+          testimonials {
+            subject,
+            author,
+            content,
+            source,
+            org
+          }
+        }
         `
       });
   }

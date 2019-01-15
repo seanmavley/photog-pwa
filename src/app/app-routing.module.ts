@@ -5,7 +5,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', component: MenuComponent, children: [
-    { path: '', loadChildren: './khophi/khophi.module#KhophiModule' }
+    { path: '', loadChildren: './khophi/khophi.module#KhophiModule' },
+    { path: '', loadChildren: './pages/pages.module#PagesModule' }
   ]},
   { path: '**', component: NotfoundComponent }
 ];

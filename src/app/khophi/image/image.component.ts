@@ -18,7 +18,7 @@ export class ImageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.image_url = `${this.CMS}/uploads/${this.route.params['url']}`;
+    this.image_url = `${this.CMS}/uploads/${this.route.snapshot.params['url']}`;
     console.log(this.image_url);
   }
 

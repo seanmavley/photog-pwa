@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar, MatDialog } from '@angular/material';
+import { CockpitService } from '../services/cockpit.service';
 
 @Component({
   selector: 'app-menu',
@@ -19,11 +20,19 @@ export class MenuComponent implements OnInit {
   isLoggedIn: boolean;
   currentUser: any;
 
-  constructor(private dialog: MatDialog,
-    private router: Router, private snack: MatSnackBar) { }
+  constructor(private cockpit: CockpitService, private snack: MatSnackBar) {}
 
-
-    ngOnInit() {
-      //
-    }
+  ngOnInit() {
+    //
+    this.cockpit.getAllPages().subscribe(
+      res => {
+        // console.log(res);
+        localStorage.setItem('pages', JSON.stringify(res['data']['pages']));
+      },
+      error => {
+        console.log(error);
+        this.snack.open(JSON.stringify(error), 'close');
+      }
+    );
+  }
 }

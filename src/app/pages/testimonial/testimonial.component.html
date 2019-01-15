@@ -1,0 +1,23 @@
+<div class="container my-4">
+  <div fxLayout="row wrap" fxLayoutAlign="center center">
+    <div fxFlex.gt-xs="60" fxFlex.xs="95">
+      <div fxLayout="column wrap" fxLayoutGap="15px">
+        <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+        <div fxFlex *ngFor="let testimonial of testimonials">
+          <mat-card>
+            <mat-card-title>{{ testimonial.author}}</mat-card-title>
+            <mat-card-subtitle title="{{ testimonial.updatedAt }}">of {{ testimonial.org }}</mat-card-subtitle>
+            <mat-card-content>
+              <p style="font-size:1.2rem;">
+                {{ testimonial.content}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions align="end" *ngIf="testimonial.source">
+              <a mat-button>Learn more</a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
