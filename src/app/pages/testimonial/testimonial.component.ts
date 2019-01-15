@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class TestimonialComponent implements OnInit {
 
+  busy: boolean;
   testimonials: any;
 
   constructor(private cockpit: CockpitService, private title: Title) { }

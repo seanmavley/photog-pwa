@@ -13,12 +13,14 @@ import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { CockpitService } from './services/cockpit.service';
 import { GraphQLModule } from './graphql.module';
+import { OfflineComponent } from './offline/offline.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     NotfoundComponent,
+    OfflineComponent
   ],
   imports: [
     BrowserModule,
