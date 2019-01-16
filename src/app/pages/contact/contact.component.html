@@ -10,8 +10,8 @@
         <mat-card-content>
           {{ contact.content }}
         </mat-card-content>
-        <mat-card-actions align="start">
-          <button mat-button>Learn more</button>
+        <mat-card-actions align="end" *ngIf="contact.link">
+          <a mat-button href="contact.link">Learn more</a>
         </mat-card-actions>
       </mat-card>
     </div>
