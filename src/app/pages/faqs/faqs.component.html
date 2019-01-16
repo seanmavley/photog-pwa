@@ -1,8 +1,11 @@
 <div class="container my-4">
+  <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+  <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !faqs.length">
+    <p class="mat-display-1">No FAQs   </p>
+  </div>
   <div fxLayout="row wrap" fxLayoutAlign="center center">
     <div fxFlex.gt-xs="80" fxFlex.xs="95">
       <div fxLayout="column wrap" fxLayoutGap="15px">
-        <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
         <div fxFlex *ngFor="let faq of faqs">
           <mat-card>
             <mat-card-title>{{ faq.question}}</mat-card-title>

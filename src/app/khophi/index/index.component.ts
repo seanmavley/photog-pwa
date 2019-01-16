@@ -13,6 +13,7 @@ export class IndexComponent implements OnInit {
   CMS = AppSettings.CMS_ENDPOINT;
   categories: any;
   busy: boolean;
+  recent: any;
 
   constructor(
     private cockpit: CockpitService,
@@ -22,15 +23,25 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle('KhoPhi Photography');
+  }
 
-    this.busy = true;
-    this.cockpit.listCategories().subscribe(res => {
-      this.busy = false;
-      console.log(res);
-      this.categories = res['data']['categories'];
-      // }, (error) => {
-      //   console.log(error);
-      //   this.snack.open(error, 'close');
+  loadRecent() {
+    this.cockpit.getArticles().subscribe(res => {
+      this.recent = res['data']['articles'];
     });
+  }
+
+  loadCategories() {
+    this.cockpit.listCategories().subscribe(
+      res => {
+        this.busy = false;
+        console.log(res);
+        this.categories = res['data']['categories'];
+      },
+      error => {
+        console.log(error);
+        this.snack.open(error, 'close');
+      }
+    );
   }
 }

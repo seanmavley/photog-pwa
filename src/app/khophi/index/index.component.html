@@ -2,7 +2,7 @@
   <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
   <h3 class="mat-display-1 mb-0">Love for...</h3>
   <mat-divider class="mb-2"></mat-divider>
-  <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !categories?.length">
+  <div fxLayout="row" fxLayoutAlign="start" class="text-center" *ngIf="!busy && !categories?.length">
     <p class="mat-display-1">No Categories</p>
   </div>
   <div fxLayout="row wrap">
@@ -31,8 +31,11 @@
 <div class="mx-2 mt-5">
   <h3 class="mat-display-1 mb-0">Recent works</h3>
   <mat-divider class="mb-2"></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="start" class="text-center" *ngIf="!busy && !recent?.length">
+    <p class="mat-display-1">No Recent Works</p>
+  </div>
   <mat-grid-list cols="2" rowHeight="300" gutterSize="10">
-    <mat-grid-tile *ngFor="let category of categories">
+    <mat-grid-tile *ngFor="let category of recent">
       <a mat-button [routerLink]="['/category', category._id]" class="m-0 p-0">
         <mat-grid-tile-header>{{ category.title }}</mat-grid-tile-header>
         <img height="300" src="{{ CMS }}/{{category.cover.url}}" alt="Photo of a Shiba Inu">

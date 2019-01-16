@@ -1,8 +1,11 @@
 <div class="container my-4">
+  <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+  <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !about">
+    <h1 class="mat-display-1">No Testimonials</h1>
+  </div>
   <div fxLayout="row wrap" fxLayoutAlign="center center">
     <div fxFlex.gt-xs="60" fxFlex.xs="95">
       <div fxLayout="column wrap" fxLayoutGap="15px">
-        <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
         <div fxFlex *ngFor="let testimonial of testimonials">
           <mat-card>
             <mat-card-title>{{ testimonial.author}}</mat-card-title>

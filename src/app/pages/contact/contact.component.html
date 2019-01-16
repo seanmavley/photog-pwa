@@ -1,4 +1,8 @@
 <div class="container my-4 mx-2">
+  <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+  <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !contact">
+    <p class="mat-display-1">No Contact</p>
+  </div>
   <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" *ngIf="contact">
     <div fxFlex.sm="80" fxFlex.lg="50" fxFlex.md="70">
       <mat-card>
