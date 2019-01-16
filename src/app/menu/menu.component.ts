@@ -24,16 +24,16 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     //
-    this.cockpit.getAllPages().subscribe(
-      res => {
-        // console.log(res);
-        localStorage.setItem('pages', JSON.stringify(res['data']['pages']));
-      },
-      error => {
-        console.log(error);
-        this.snack.open(JSON.stringify(error), 'close');
-      }
-    );
+    // this.cockpit.getAllPages().subscribe(
+    //   res => {
+    //     // console.log(res);
+    //     localStorage.setItem('pages', JSON.stringify(res['data']['pages']));
+    //   },
+    //   error => {
+    //     console.log(error);
+    //     this.snack.open(JSON.stringify(error), 'close');
+    //   }
+    // );
   }
 
   showMobile() {

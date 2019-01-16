@@ -17,7 +17,7 @@
   <div *ngIf="!busy && article" class="mt-4 mx-2">
     <mat-grid-list cols="3" rowHeight="300" gutterSize="20">
       <mat-grid-tile *ngFor="let image of article.gallery">
-        <a [routerLink]="['/image', image.url.split('/')[2]]" mat-button class="m-0 p-0">
+        <a [routerLink]="['/image', image.url.split('/')[2], article.slug]" mat-button class="m-0 p-0">
           <mat-grid-tile-header>{{ image.name }}</mat-grid-tile-header>
           <img height="300" src="{{ CMS }}/{{image.url}}" alt="Photo of a Shiba Inu">
         </a>

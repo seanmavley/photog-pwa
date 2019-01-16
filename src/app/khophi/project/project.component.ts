@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CockpitService } from 'src/app/services/cockpit.service';
 import { AppSettings } from '../../utils/constants';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-project',
@@ -18,18 +19,22 @@ export class ProjectComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private cockpit: CockpitService
+    private cockpit: CockpitService,
+    private title: Title
   ) { }
 
   ngOnInit() {
+    this.title.setTitle('Project');
+
     this.busy = true;
-    this.article_id = this.route.snapshot.params['id'];
+    this.article_id = this.route.snapshot.params['slug'];
 
     this.cockpit.getArticle(this.article_id)
       .subscribe((res) => {
         this.busy = false;
         console.log(res);
-        this.article = res['data']['article'];
+        this.article = res['data']['articles'][0];
+        this.title.setTitle(this.article.title);
       });
   }
 

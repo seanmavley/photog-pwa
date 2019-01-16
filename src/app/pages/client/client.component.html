@@ -1,7 +1,15 @@
-<div class="container my-4">
-  <mat-grid-list cols="4" rowHeight="300px">
-    <mat-grid-tile *ngFor="let tile of tiles" colspan="1" rowspan="1" [style.background]="tile.color">
-      {{tile.text}}
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+<div class="container my-4 mx-2">
+    <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+    <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !clients?.length">
+      <p class="mat-display-1">No Clients</p>
+    </div>
+    <mat-grid-list cols="3" rowHeight="300" gutterSize="20">
+      <mat-grid-tile *ngFor="let client of clients">
+        <a mat-button href="{{ client.link }}" target="new"  class="m-0 p-0">
+          <mat-grid-tile-header>{{ client.title }}</mat-grid-tile-header>
+          <img height="300" src="{{ CMS }}/{{client.logo.url}}" alt="Logo of {{ client.title }}">
+        </a>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  

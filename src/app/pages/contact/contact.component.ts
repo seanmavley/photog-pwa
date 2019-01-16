@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppSettings } from 'src/app/utils/constants';
 import { Title } from '@angular/platform-browser';
+import { CockpitService } from 'src/app/services/cockpit.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,16 +13,16 @@ export class ContactComponent implements OnInit {
   contact: any;
   CMS = AppSettings.CMS_ENDPOINT;
 
-  constructor(private title: Title) {}
+  constructor(private title: Title, private cockpit: CockpitService) {}
 
   ngOnInit() {
 
     this.title.setTitle('Contact');
 
-    const all_pages = JSON.parse(localStorage.getItem('pages'));
-    this.contact = all_pages.find(element => {
-      return element.slug === 'contact';
-    });
-    console.log(this.contact);
+    this.cockpit.getPage('contact')
+      .subscribe((res) => {
+        this.contact = res['data']['pages'][0];
+        console.log(this.contact);
+      });
   }
 }

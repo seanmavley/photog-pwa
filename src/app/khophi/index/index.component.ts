@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CockpitService } from 'src/app/services/cockpit.service';
 import { MatSnackBar } from '@angular/material';
 import { AppSettings } from '../../utils/constants';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-index',
@@ -13,9 +14,15 @@ export class IndexComponent implements OnInit {
   categories: any;
   busy: boolean;
 
-  constructor(private cockpit: CockpitService, private snack: MatSnackBar) {}
+  constructor(
+    private cockpit: CockpitService,
+    private snack: MatSnackBar,
+    private title: Title
+  ) {}
 
   ngOnInit() {
+    this.title.setTitle('KhoPhi Photography');
+
     this.busy = true;
     this.cockpit.listCategories().subscribe(res => {
       this.busy = false;

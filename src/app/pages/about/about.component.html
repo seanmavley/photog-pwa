@@ -1,14 +1,12 @@
 <div class="container my-4">
-  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" *ngIf="about">
     <div>
-      <img src="{{ CMS }}/{{ about.cover.url }}" width="300">
+      <img src="{{ CMS }}/{{ about.cover?.url }}" width="300">
     </div>
     <div fxFlex.sm="80" fxFlex.lg="50" fxFlex.md="70">
       <mat-card>
-        <mat-card-header>
           <mat-card-title>{{ about.title }}</mat-card-title>
           <!-- <mat-card-subtitle>Subtitle</mat-card-subtitle> -->
-        </mat-card-header>
         <mat-card-content>
           {{ about.content }}
         </mat-card-content>

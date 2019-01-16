@@ -1,14 +1,8 @@
-<div class="container my-4">
-  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
-    <div *ngIf="contact.cover?.url">
-      <img src="{{ CMS }}/{{ contact.cover.url }}" width="300">
-    </div>
+<div class="container my-4 mx-2">
+  <div fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="10px" *ngIf="contact">
     <div fxFlex.sm="80" fxFlex.lg="50" fxFlex.md="70">
       <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ contact.title }}</mat-card-title>
-          <!-- <mat-card-subtitle>Subtitle</mat-card-subtitle> -->
-        </mat-card-header>
+        <mat-card-title>{{ contact.title }}</mat-card-title>
         <mat-card-content>
           {{ contact.content }}
         </mat-card-content>
@@ -18,4 +12,10 @@
       </mat-card>
     </div>
   </div>
+  <mat-grid-list cols="1" rowHeight="100vh" *ngIf="contact?.cover?.url" class="mt-4">
+    <mat-grid-tile>
+      <mat-grid-tile-header>{{ contact.cover.name }}</mat-grid-tile-header>
+      <img src="{{ CMS }}/{{ contact.cover.url }}">
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

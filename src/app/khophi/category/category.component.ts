@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CockpitService } from 'src/app/services/cockpit.service';
 import { AppSettings } from '../../utils/constants';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-category',
@@ -14,9 +15,11 @@ export class CategoryComponent implements OnInit {
   category_id: string;
   busy: boolean;
 
-  constructor(private route: ActivatedRoute, private cockpit: CockpitService) {}
+  constructor(private route: ActivatedRoute, private cockpit: CockpitService, private title: Title) {}
 
   ngOnInit() {
+    this.title.setTitle('Category');
+
     this.busy = true;
     this.category_id = this.route.snapshot.params['id'];
 

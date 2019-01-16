@@ -19,6 +19,7 @@ export class CockpitService {
               title,
               subtitle,
               description,
+              slug,
               cover {
                 _id,
                 url,
@@ -43,6 +44,7 @@ export class CockpitService {
               title,
               subtitle,
               description,
+              slug,
               cover {
                 _id,
                 url,
@@ -50,6 +52,7 @@ export class CockpitService {
               articles {
                 _id,
                 title,
+                slug,
                 cover {
                   name,
                   url
@@ -74,24 +77,26 @@ export class CockpitService {
           articles {
             _id,
             title,
-            content
+            content,
+            slug,
           }
         `
       });
   }
 
-  getArticle(id: string) {
+  getArticle(slug: string) {
     return this.apollo
       .query({
         variables: {
-          article: id
+          slug: slug
         },
         query: gql`
-          query article($article: ID!) {
-            article(id: $article) {
+          query articles($slug: String) {
+            articles (where: {slug: $slug}) {
               _id,
               title,
               subtitle,
+              slug,
               cover {
                 _id,
                 name,
@@ -122,8 +127,34 @@ export class CockpitService {
               name,
               url
             },
+            createdAt,
+            updatedAt
           }
         }`
+      });
+  }
+
+  getPage(slug: string) {
+    return this.apollo
+      .query({
+        variables: {
+          slug: slug
+        },
+        query: gql`
+          query pages ($slug: String) {
+            pages (where: { slug: $slug }) {
+              slug,
+              title,
+              content,
+              cover {
+                name,
+                url,
+              },
+              createdAt,
+              updatedAt
+            }
+          }
+        `
       });
   }
 
@@ -135,6 +166,25 @@ export class CockpitService {
           faqs {
             question,
             answer,
+            link,
+            updatedAt
+          }
+        }
+        `
+      });
+  }
+
+  getAllClients() {
+    return this.apollo
+      .query({
+        query: gql`
+        query clients {
+          clients {
+            title,
+            logo {
+              name,
+              url
+            },
             link,
             updatedAt
           }

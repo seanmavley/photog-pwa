@@ -1,11 +1,39 @@
 <div class="container my-4 mx-2">
   <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
+  <h3 class="mat-display-1 mb-0">Love for...</h3>
+  <mat-divider class="mb-2"></mat-divider>
   <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !categories?.length">
     <p class="mat-display-1">No Categories</p>
   </div>
-  <mat-grid-list cols="3" rowHeight="300" gutterSize="20">
+  <div fxLayout="row wrap">
+    <mat-card fxFlex="33" *ngFor="let category of categories">
+      <mat-card-title>{{ category.title }}</mat-card-title>
+      <mat-card-subtitle>{{ category.subtitle }}</mat-card-subtitle>
+      <img matCardImage src="{{ CMS }}/{{category.cover.url}}">
+      <mat-card-content>
+        {{ (category.description.length > 100) ? (category.description | slice:0:100) +'...':(category.description)}}
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <a mat-raised-button color="primary" [routerLink]="['/category', category._id]">View</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <!-- <mat-grid-list cols="4" rowHeight="200" gutterSize="20">
+    <mat-grid-tile >
+      <a mat-button  class="m-0 p-0">
+        <mat-grid-tile-header></mat-grid-tile-header>
+        <img height="300"  alt="Photo of a Shiba Inu">
+      </a>
+    </mat-grid-tile>
+  </mat-grid-list> -->
+</div>
+
+<div class="mx-2 mt-5">
+  <h3 class="mat-display-1 mb-0">Recent works</h3>
+  <mat-divider class="mb-2"></mat-divider>
+  <mat-grid-list cols="2" rowHeight="300" gutterSize="10">
     <mat-grid-tile *ngFor="let category of categories">
-      <a mat-button [routerLink]="['/category', category._id]"  class="m-0 p-0">
+      <a mat-button [routerLink]="['/category', category._id]" class="m-0 p-0">
         <mat-grid-tile-header>{{ category.title }}</mat-grid-tile-header>
         <img height="300" src="{{ CMS }}/{{category.cover.url}}" alt="Photo of a Shiba Inu">
       </a>

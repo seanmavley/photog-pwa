@@ -17,7 +17,7 @@
   <div *ngIf="!busy && category" class="my-4">
     <mat-grid-list cols="3" rowHeight="300" gutterSize="20">
       <mat-grid-tile *ngFor="let article of category.articles">
-        <a mat-button [routerLink]="['/article', article._id]" class="m-0 p-0">
+        <a mat-button [routerLink]="['/article', article.slug]" class="m-0 p-0">
           <mat-grid-tile-header>{{ article.title }}</mat-grid-tile-header>
           <img height="300" src="{{CMS}}/{{article.cover.url}}" alt="{{ article.cover.name">
         </a>
