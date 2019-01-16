@@ -10,6 +10,7 @@ import { AppSettings } from 'src/app/utils/constants';
 })
 export class ClientComponent implements OnInit {
 
+  busy: boolean;
   CMS = AppSettings.CMS_ENDPOINT;
 
   clients: any;
