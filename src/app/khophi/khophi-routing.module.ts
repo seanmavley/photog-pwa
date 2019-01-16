@@ -4,7 +4,6 @@ import { IndexComponent } from './index/index.component';
 import { CategoryComponent } from './category/category.component';
 import { ProjectComponent } from './project/project.component';
 import { ImageComponent } from './image/image.component';
-import { ListcategoryComponent } from './listcategory/listcategory.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
