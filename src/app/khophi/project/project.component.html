@@ -8,8 +8,7 @@
           <mat-card-subtitle>{{ article.subtitle }}</mat-card-subtitle>
         </mat-card-header>
         <img matCardImage src="{{ CMS }}/{{ article.cover.url }}">
-        <mat-card-content class="mat-body">
-          {{ article.content }}
+        <mat-card-content class="mat-body" [innerHTML]="article.content">
         </mat-card-content>
       </mat-card>
     </div>

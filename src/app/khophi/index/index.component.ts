@@ -23,6 +23,9 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle('KhoPhi Photography');
+
+    this.loadRecent();
+    this.loadCategories();
   }
 
   loadRecent() {

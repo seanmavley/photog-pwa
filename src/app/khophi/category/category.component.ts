@@ -12,7 +12,7 @@ import { Title } from '@angular/platform-browser';
 export class CategoryComponent implements OnInit {
   CMS = AppSettings.CMS_ENDPOINT;
   category: any;
-  category_id: string;
+  slug: string;
   busy: boolean;
 
   constructor(private route: ActivatedRoute, private cockpit: CockpitService, private title: Title) {}
@@ -21,12 +21,12 @@ export class CategoryComponent implements OnInit {
     this.title.setTitle('Category');
 
     this.busy = true;
-    this.category_id = this.route.snapshot.params['id'];
+    this.slug = this.route.snapshot.params['slug'];
 
-    this.cockpit.getCategory(this.category_id).subscribe(res => {
+    this.cockpit.getCategory(this.slug).subscribe(res => {
       this.busy = false;
       console.log(res);
-      this.category = res['data']['category'];
+      this.category = res['data']['categories'][0];
     });
   }
 }

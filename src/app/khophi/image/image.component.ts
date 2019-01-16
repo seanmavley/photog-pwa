@@ -22,4 +22,10 @@ export class ImageComponent implements OnInit {
   goBack() {
     this.router.navigate(['/article', this.route.snapshot.params['slug']]);
   }
+
+  goFullScreen() {
+    const imgTag = document.getElementById('myImage');
+    console.log(imgTag);
+    imgTag.requestFullscreen();
+  }
 }

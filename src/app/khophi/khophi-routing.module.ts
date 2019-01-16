@@ -7,7 +7,7 @@ import { ImageComponent } from './image/image.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
-  { path: 'category/:id', component: CategoryComponent },
+  { path: 'category/:slug', component: CategoryComponent },
   { path: 'article/:slug', component: ProjectComponent },
   { path: 'image/:url/:slug', component: ImageComponent }
 ];

@@ -1,11 +1,11 @@
 <div class="container my-4">
   <div fxLayout="row wrap" fxLayoutAlign="center center" class="mx-2">
     <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
-    <div fxFlex.lg="50" fxFlex.md="60" fxFlex.sm="70" fxFlex.xs="90">
+    <div fxFlex.lg="40" fxFlex.md="50" fxFlex.sm="60" fxFlex.xs="90">
       <mat-card *ngIf="!busy && category">
         <mat-card-header>
           <mat-card-title>{{ category.title }}</mat-card-title>
-          <mat-card-subtitle>category</mat-card-subtitle>
+          <mat-card-subtitle>{{ category.subtitle }}</mat-card-subtitle>
         </mat-card-header>
         <img matCardImage src="{{CMS}}/{{ category.cover.url }}">
         <mat-card-content class="mat-body">
@@ -14,7 +14,11 @@
       </mat-card>
     </div>
   </div>
+  <mat-divider class="my-3"></mat-divider>
   <div *ngIf="!busy && category" class="my-4">
+    <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !category?.articles?.length">
+      <p class="mat-display-1">No Articles</p>
+    </div>
     <mat-grid-list cols="3" rowHeight="300" gutterSize="20">
       <mat-grid-tile *ngFor="let article of category.articles">
         <a mat-button [routerLink]="['/article', article.slug]" class="m-0 p-0">
