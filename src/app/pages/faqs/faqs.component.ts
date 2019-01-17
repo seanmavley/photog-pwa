@@ -19,7 +19,6 @@ export class FaqsComponent implements OnInit {
     this.busy = true;
     this.cockpit.getAllFaqs()
       .subscribe((res) => {
-        console.log(res);
         this.busy = false;
         this.faqs = res['data']['faqs'];
       });

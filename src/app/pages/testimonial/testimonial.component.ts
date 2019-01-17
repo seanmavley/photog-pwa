@@ -16,10 +16,10 @@ export class TestimonialComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle('Testimonials');
-
+    this.busy = true;
     this.cockpit.getAllTestimonials()
       .subscribe(res => {
-        console.log(res);
+        this.busy = false;
         this.testimonials = res['data']['testimonials'];
       });
   }

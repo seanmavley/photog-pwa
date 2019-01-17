@@ -17,13 +17,13 @@ export class ContactComponent implements OnInit {
   constructor(private title: Title, private cockpit: CockpitService) {}
 
   ngOnInit() {
-
+    this.busy = true;
     this.title.setTitle('Contact');
 
     this.cockpit.getPage('contact')
       .subscribe((res) => {
+        this.busy = false;
         this.contact = res['data']['pages'][0];
-        console.log(this.contact);
       });
   }
 }

@@ -1,14 +1,11 @@
 <div class="container my-4">
   <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
-  <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !region">
-    <p class="mat-display-1">No About</p>
-  </div>
   <div fxLayout="row" fxLayoutAlign="center">
     <div fxFlex.xs="95" fxFlex.gt-xs="60">
       <div *ngIf="!region">
         <p class="mat-display-1">Empty page</p>
         <p class="mat-body-1">
-          The contents of this page has not been added yet
+          The contents of this page has not been added yet, or doesn't exist.
         </p>
       </div>
       <mat-card *ngIf="region">

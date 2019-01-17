@@ -18,10 +18,11 @@ export class ClientComponent implements OnInit {
   constructor(private title: Title, private cockpit: CockpitService) { }
 
   ngOnInit() {
+    this.busy = true;
     this.title.setTitle('Clients');
     this.cockpit.getAllClients()
       .subscribe((res) => {
-        console.log(res);
+        this.busy = false;
         this.clients = res['data']['clients'];
       });
   }
