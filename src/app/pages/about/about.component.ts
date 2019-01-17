@@ -9,6 +9,8 @@ import { CockpitService } from 'src/app/services/cockpit.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  busy: boolean;
+  
   about: any;
   CMS = AppSettings.CMS_ENDPOINT;
 

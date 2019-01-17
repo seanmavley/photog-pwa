@@ -14,8 +14,8 @@
         <mat-card-content>
           {{ about.content }}
         </mat-card-content>
-        <mat-card-actions align="end">
-          <button mat-button>Learn more</button>
+        <mat-card-actions align="end" *ngIf="about.link">
+          <a href="about.link" target="new" mat-button>Learn more</a>
         </mat-card-actions>
       </mat-card>
     </div>

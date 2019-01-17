@@ -10,6 +10,7 @@ import { CockpitService } from 'src/app/services/cockpit.service';
 })
 export class ContactComponent implements OnInit {
 
+  busy: boolean;
   contact: any;
   CMS = AppSettings.CMS_ENDPOINT;
 

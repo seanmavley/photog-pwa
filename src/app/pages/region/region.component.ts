@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./region.component.css']
 })
 export class RegionComponent implements OnInit {
-
+  busy: boolean;
   region: any;
   CMS = AppSettings.CMS_ENDPOINT;
 
@@ -26,5 +26,4 @@ export class RegionComponent implements OnInit {
     });
     console.log(this.region);
   }
-
 }

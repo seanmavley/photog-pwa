@@ -1,6 +1,6 @@
 <div class="container my-4">
   <mat-progress-bar mode="indeterminate" *ngIf="busy"></mat-progress-bar>
-  <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !about">
+  <div fxLayout="row" fxLayoutAlign="center" class="text-center" *ngIf="!busy && !testimonials?.length">
     <h1 class="mat-display-1">No Testimonials</h1>
   </div>
   <div fxLayout="row wrap" fxLayoutAlign="center center">
