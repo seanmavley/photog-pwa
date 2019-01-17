@@ -14,6 +14,8 @@ import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { CockpitService } from './services/cockpit.service';
 import { GraphQLModule } from './graphql.module';
 import { OfflineComponent } from './offline/offline.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { OfflineComponent } from './offline/offline.component';
     NgProgressModule,
     NgProgressRouterModule,
     GraphQLModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [CockpitService],
   bootstrap: [AppComponent]
